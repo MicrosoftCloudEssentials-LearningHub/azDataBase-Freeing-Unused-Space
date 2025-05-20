@@ -26,22 +26,6 @@ Last updated: 2025-05-20
 
 </details>
 
-<details>
-<summary><b>Table of Content </b> (Click to expand)</summary>
-
-- [Overview](#overview)
-- [Relational Databases](#relational-databases)
-  - [Azure SQL Database](#azure-sql-database)
-  - [Azure SQL Managed Instance](#azure-sql-managed-instance)
-  - [SQL Server on Azure Virtual Machines](#sql-server-on-azure-virtual-machines)
-  - [Azure Database for PostgreSQL](#azure-database-for-postgresql)
-  - [Azure Database for MySQL](#azure-database-for-mysql)
-- [Non-Relational Databases](#non-relational-databases)
-  - [Azure Cosmos DB](#azure-cosmos-db)
-  - [Azure Managed Instance for Apache Cassandra](#azure-managed-instance-for-apache-cassandra)
-  - [Azure Cache for Redis](#azure-cache-for-redis)
-
-</details>
 
 ## Overview 
 
