@@ -26,22 +26,6 @@ Last updated: 2025-05-20
 
 </details>
 
-<details>
-<summary><b>Table of Content </b> (Click to expand)</summary>
-
-- [Overview](#overview)
-- [Relational Databases](#relational-databases)
-  - [Azure SQL Database](#azure-sql-database)
-  - [Azure SQL Managed Instance](#azure-sql-managed-instance)
-  - [SQL Server on Azure Virtual Machines](#sql-server-on-azure-virtual-machines)
-  - [Azure Database for PostgreSQL](#azure-database-for-postgresql)
-  - [Azure Database for MySQL](#azure-database-for-mysql)
-- [Non-Relational Databases](#non-relational-databases)
-  - [Azure Cosmos DB](#azure-cosmos-db)
-  - [Azure Managed Instance for Apache Cassandra](#azure-managed-instance-for-apache-cassandra)
-  - [Azure Cache for Redis](#azure-cache-for-redis)
-
-</details>
 
 ## Overview 
 
@@ -110,64 +94,6 @@ graph TD
     A5 --> A5_2[Index Optimization]
     A5 --> A5_3[Cleaning Up Unused Data]
 ```
-
-### Azure SQL Database
-
-> Click here for additional information on this topic [Azure SQL Database: Freeing Up Unused Space - Overview](https://github.com/MicrosoftCloudEssentials-LearningHub/Demos-ScenariosHub/blob/main/0_Azure/1_AzureData/1_Databases/demos/8_DBFreeingUpUnusedSpace/relational/0_az-sql-db.md) 
-
-### Azure SQL Managed Instance
-
-> Click here for additional information on this topic [Azure SQL Managed Instance: Freeing Up Unused Space - Overview](https://github.com/MicrosoftCloudEssentials-LearningHub/Demos-ScenariosHub/blob/main/0_Azure/1_AzureData/1_Databases/demos/8_DBFreeingUpUnusedSpace/relational/1_az-sql-mi.md) 
-
-### SQL Server on Azure Virtual Machines
-
-> Click here for additional information on this topic [Azure SQL Managed Instance: Freeing Up Unused Space - Overview](https://github.com/MicrosoftCloudEssentials-LearningHub/Demos-ScenariosHub/blob/main/0_Azure/1_AzureData/1_Databases/demos/8_DBFreeingUpUnusedSpace/relational/2_sql-az-vm.md)
-
-### Azure Database for PostgreSQL
-
-> Click here for additional information on this topic [Azure Database for PostgreSQL: Freeing Up Unused Space - Overview](https://github.com/MicrosoftCloudEssentials-LearningHub/Demos-ScenariosHub/blob/main/0_Azure/1_AzureData/1_Databases/demos/8_DBFreeingUpUnusedSpace/relational/3_az-postgreSQL.md)
-
-### Azure Database for MySQL
-
-> Click here for additional information on this topic [Azure Database for MySQL: Freeing Up Unused Space - Overview](https://github.com/MicrosoftCloudEssentials-LearningHub/Demos-ScenariosHub/blob/main/0_Azure/1_AzureData/1_Databases/demos/8_DBFreeingUpUnusedSpace/relational/4_az-db-mysql.md)
-
-## Non-Relational Databases
-
-```mermaid
-graph TD
-    A[Non-Relational Databases]
-
-    A1[Azure Cosmos DB]
-    A2[Azure Managed Instance for Apache Cassandra]
-    A3[Azure Cache for Redis]
-
-    A --> A1
-    A --> A2
-    A --> A3
-
-    A1 --> A1_1[Partitioning]
-    A1 --> A1_2[Index Optimization]
-    A1 --> A1_3[Archiving Old Data]
-
-    A2 --> A2_1[Data Compression]
-    A2 --> A2_2[Index Optimization]
-    A2 --> A2_3[Cleaning Up Unused Data]
-
-    A3 --> A3_1[Data Eviction Policies]
-    A3 --> A3_2[Monitoring and Maintenance]
-```
-
-### Azure Cosmos DB
-
-> Click here for additional information on this topic [Azure Cosmos DB: Freeing Up Unused Space - Overview](https://github.com/MicrosoftCloudEssentials-LearningHub/Demos-ScenariosHub/blob/main/0_Azure/1_AzureData/1_Databases/demos/8_DBFreeingUpUnusedSpace/non-relational/0_az-cosmosdb.md)
-
-### Azure Managed Instance for Apache Cassandra
-
-> Click here for additional information on this topic [Azure Managed Instance for Apache Cassandra: Freeing Up Unused Space - Overview](https://github.com/MicrosoftCloudEssentials-LearningHub/Demos-ScenariosHub/blob/main/0_Azure/1_AzureData/1_Databases/demos/8_DBFreeingUpUnusedSpace/non-relational/1_az-mi-apache-cassandra.md)
-
-### Azure Cache for Redis
-
-> Click here for additional information on this topic [Azure Cache for Redis: Freeing Up Unused Space - Overview](https://github.com/MicrosoftCloudEssentials-LearningHub/Demos-ScenariosHub/blob/main/0_Azure/1_AzureData/1_Databases/demos/8_DBFreeingUpUnusedSpace/non-relational/2_az-cache-redis.md)
 
 <div align="center">
   <h3 style="color: #4CAF50;">Total Visitors</h3>
