@@ -28,15 +28,15 @@ Last updated: 2025-01-20
 
 - [Overview](#overview)
 - [Relational Databases](#relational-databases)
-    - [Azure SQL Database](#azure-sql-database)
-    - [Azure SQL Managed Instance](#azure-sql-managed-instance)
-    - [SQL Server on Azure Virtual Machines](#sql-server-on-azure-virtual-machines)
-    - [Azure Database for PostgreSQL](#azure-database-for-postgresql)
-    - [Azure Database for MySQL](#azure-database-for-mysql)
+  - [Azure SQL Database](#azure-sql-database)
+  - [Azure SQL Managed Instance](#azure-sql-managed-instance)
+  - [SQL Server on Azure Virtual Machines](#sql-server-on-azure-virtual-machines)
+  - [Azure Database for PostgreSQL](#azure-database-for-postgresql)
+  - [Azure Database for MySQL](#azure-database-for-mysql)
 - [Non-Relational Databases](#non-relational-databases)
-    - [Azure Cosmos DB](#azure-cosmos-db)
-    - [Azure Managed Instance for Apache Cassandra](#azure-managed-instance-for-apache-cassandra)
-    - [Azure Cache for Redis](#azure-cache-for-redis)
+  - [Azure Cosmos DB](#azure-cosmos-db)
+  - [Azure Managed Instance for Apache Cassandra](#azure-managed-instance-for-apache-cassandra)
+  - [Azure Cache for Redis](#azure-cache-for-redis)
 
 </details>
 
@@ -166,4 +166,3 @@ graph TD
   <h3 style="color: #4CAF50;">Total Visitors</h3>
   <img src="https://profile-counter.glitch.me/brown9804/count.svg" alt="Visitor Count" style="border: 2px solid #4CAF50; border-radius: 5px; padding: 5px;"/>
 </div>
-
