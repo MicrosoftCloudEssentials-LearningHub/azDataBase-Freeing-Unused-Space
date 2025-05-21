@@ -1,4 +1,4 @@
-# Azure Cosmos DB: Freeing Up Unused Space - Overview 
+# Azure Cosmos DB: <br/> Freeing Up Unused Space - Overview 
 
 Costa Rica
 
