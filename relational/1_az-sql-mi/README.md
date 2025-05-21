@@ -53,42 +53,12 @@ For Azure SQL Managed Instance, consider these strategies:
 
 ### Detailed Space Usage by File
 
-> This query provides detailed information about each file, including the file name, type, growth settings, and more:
+> This query provides detailed information about each file, including the file name, type, growth settings, and more. Click [here](relational/1_az-sql-mi/Detailed_SpaceUsage_byFile.sql) view a sample script used.
 
-  ```sql
-  WITH CTE AS (
-      SELECT 
-          file_id,
-          name AS file_name,
-          type_desc AS file_type,
-          physical_name,
-          CAST(FILEPROPERTY(name, 'SpaceUsed') AS bigint) * 8 / 1024.0 AS space_used_mb,
-          CAST(size AS bigint) * 8 / 1024.0 AS space_allocated_mb,
-          CAST(max_size AS bigint) * 8 / 1024.0 AS max_size_mb,
-          growth,
-          CASE 
-              WHEN is_percent_growth = 1 THEN 'Percentage'
-              ELSE 'MB'
-          END AS growth_type
-      FROM sys.database_files
-  )
-  SELECT 
-      file_id,
-      file_name,
-      file_type,
-      physical_name,
-      space_used_mb,
-      space_allocated_mb,
-      max_size_mb,
-      growth,
-      growth_type,
-      space_used_mb / space_allocated_mb * 100 AS [Occupancy %],
-      100 - (space_used_mb / space_allocated_mb * 100) AS [Free %]
-  FROM CTE
-  ORDER BY [Occupancy %];
-  ```
+<div align="center">
+  <img width="700" alt="image" src="https://github.com/user-attachments/assets/b6ca6507-668c-427c-b01a-6a66e7e0fedd" style="border: 2px solid #4CAF50; border-radius: 5px; padding: 5px;"/>
+</div>
 
-<img width="700" alt="image" src="https://github.com/user-attachments/assets/b6ca6507-668c-427c-b01a-6a66e7e0fedd" />
 
 | **Category**       | **Recommendation**                                                                                                                                                                                                 |
 |--------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
