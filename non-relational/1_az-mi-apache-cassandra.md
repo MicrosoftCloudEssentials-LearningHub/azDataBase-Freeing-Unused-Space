@@ -6,7 +6,7 @@ Costa Rica
 [![GitHub](https://img.shields.io/badge/--181717?logo=github&logoColor=ffffff)](https://github.com/)
 [brown9804](https://github.com/brown9804)
 
-Last updated: 2025-01-19
+Last updated: 2025-05-21
 
 ----------
 
@@ -20,7 +20,6 @@ Last updated: 2025-01-19
 - [Cleaning Up Unused Data](#cleaning-up-unused-data)
 
 </details>
-
 
 ## Data Compression
 

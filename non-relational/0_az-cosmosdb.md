@@ -1,4 +1,4 @@
-# Azure Cosmos DB: Freeing Up Unused Space - Overview 
+# Azure Cosmos DB: <br/> Freeing Up Unused Space - Overview 
 
 Costa Rica
 
@@ -6,7 +6,7 @@ Costa Rica
 [![GitHub](https://img.shields.io/badge/--181717?logo=github&logoColor=ffffff)](https://github.com/)
 [brown9804](https://github.com/brown9804)
 
-Last updated: 2025-05-20
+Last updated: 2025-05-21
 
 ----------
 
