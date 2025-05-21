@@ -166,26 +166,11 @@ DBCC SHRINKFILE (1);
 
 ## Check for Long-Running Queries
 
-> Identify any long-running queries that might be affecting the performance.
+> Identify any long-running queries that might be affecting the performance. Click [here view a Check for Long-Running Queries sample script](./src-samples/Check_Long-RunningQueries.sql)
 
-  ```sql
-  -- Check for long-running queries
-  SELECT 
-      session_id, 
-      start_time, 
-      status, 
-      command, 
-      wait_type, 
-      wait_time, 
-      blocking_session_id
-  FROM 
-      sys.dm_exec_requests
-  WHERE 
-      status = 'running'
-  ORDER BY
-  ```
-
- <img width="550" alt="image" src="https://github.com/user-attachments/assets/da27cedb-e113-4127-85c4-1ab10b9b09e6">
+<div align="center">
+  <img width="1100" alt="image" src="https://github.com/user-attachments/assets/da27cedb-e113-4127-85c4-1ab10b9b09e6" style="border: 2px solid #4CAF50; border-radius: 5px; padding: 5px;"/>
+</div>
 
 ## Shrinking the Database
 
@@ -271,34 +256,11 @@ Key Metrics:
 
 ### Automating Maintenance in Azure SQL Managed Instance
 
-1. **Analyze Fragmentation**:  Use the following query to get detailed fragmentation information.
+1. **Analyze Fragmentation**:  Use the following query to get detailed fragmentation information. Click [here view a Automating Maintenance in Azure SQL Managed Instance sample script](./src-samples/Analyze_Fragmentation.sql)
 
-     ```sql
-     SELECT 
-         S.name AS 'Schema', 
-         T.name AS 'Table', 
-         I.name AS 'Index', 
-         I.type_desc AS 'Index Type',
-         DDIPS.index_type_desc AS 'Index Level',
-         DDIPS.alloc_unit_type_desc AS 'Allocation Unit Type',
-         DDIPS.avg_fragmentation_in_percent AS 'Fragmentation (%)', 
-         DDIPS.page_count AS 'Page Count',
-         (DDIPS.page_count * 8 / 1024) AS 'Index Size (MB)'
-     FROM 
-         sys.dm_db_index_physical_stats(DB_ID(), NULL, NULL, NULL, 'DETAILED') AS DDIPS
-     INNER JOIN 
-         sys.tables T ON T.object_id = DDIPS.object_id 
-     INNER JOIN 
-         sys.schemas S ON T.schema_id = S.schema_id 
-     INNER JOIN 
-         sys.indexes I ON I.object_id = DDIPS.object_id
-     WHERE 
-         DDIPS.index_id > 0
-     ORDER BY 
-         DDIPS.avg_fragmentation_in_percent DESC;
-     ```
-    
-    <img width="550" alt="image" src="https://github.com/user-attachments/assets/78a0afbb-c110-4a66-8ebd-0c79ef30485f" />
+    <div align="center">
+      <img width="1100" alt="image" src="https://github.com/user-attachments/assets/78a0afbb-c110-4a66-8ebd-0c79ef30485f" style="border: 2px solid #4CAF50; border-radius: 5px; padding: 5px;"/>
+    </div>
 
 2. **Rebuild or Reorganize Indexes**:
 
