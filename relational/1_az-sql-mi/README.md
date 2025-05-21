@@ -83,25 +83,12 @@ For Azure SQL Managed Instance, consider these strategies:
 
 ### Space Usage by Index
 
-> This query provides detailed information about space usage by indexes, including the index name, type, and space used.
+> This query provides detailed information about space usage by indexes, including the index name, type, and space used. Click [here view a Space Usage by Index sample script](relational/1_az-sql-mi/SpaceUsage_byTable.sql)
 
-  ```sql
-  SELECT 
-      OBJECT_NAME(i.object_id) AS table_name,
-      i.name AS index_name,
-      i.type_desc AS index_type,
-      SUM(a.used_pages) * 8 / 1024.0 AS index_size_mb
-  FROM 
-      sys.indexes AS i
-      JOIN sys.partitions AS p ON i.object_id = p.object_id AND i.index_id = p.index_id
-      JOIN sys.allocation_units AS a ON p.partition_id = a.container_id
-  GROUP BY 
-      i.object_id, i.index_id, i.name, i.type_desc
-  ORDER BY 
-      index_size_mb DESC;
-  ```
+<div align="center">
+  <img width="1100" alt="image" src="https://github.com/user-attachments/assets/9e73aa43-59a8-412a-b8e1-757478050b8c" style="border: 2px solid #4CAF50; border-radius: 5px; padding: 5px;"/>
+</div>
 
-<img width="550" alt="image" src="https://github.com/user-attachments/assets/9e73aa43-59a8-412a-b8e1-757478050b8c" />
 
 ### Database Size and Space Usage
 
