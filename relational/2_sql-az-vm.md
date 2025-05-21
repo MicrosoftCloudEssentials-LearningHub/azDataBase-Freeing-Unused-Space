@@ -15,7 +15,6 @@ Last updated: 2025-05-21
 <details>
 <summary><b>Table of Content </b> (Click to expand)</summary>
 
-- [Content](#content)
 - [Cleaning Up Unused Data](#cleaning-up-unused-data)
 - [Monitoring and Maintenance](#monitoring-and-maintenance)
 - [Data Compression](#data-compression)
