@@ -99,28 +99,11 @@ For Azure SQL Managed Instance, consider these strategies:
 
 ### Filegroup Space Usage
 
-> This query provides information about space usage by filegroups, including the filegroup name, total size, used space, and free space.
-  
-  ```sql
-  -- Calculate the total size, used space, and free space for each filegroup
-  SELECT 
-      fg.name AS filegroup_name,
-      SUM(df.size * 8 / 1024.0) AS total_size_mb,
-      SUM(df.size * 8 / 1024.0) - SUM(a.total_pages * 8 / 1024.0) AS free_space_mb,
-      SUM(a.total_pages * 8 / 1024.0) AS used_space_mb
-  FROM 
-      sys.filegroups AS fg
-  JOIN 
-      sys.database_files AS df ON fg.data_space_id = df.data_space_id
-  JOIN 
-      sys.allocation_units AS a ON df.data_space_id = a.data_space_id
-  GROUP BY 
-      fg.name
-  ORDER BY 
-      total_size_mb DESC;
-  ```
+> This query provides information about space usage by filegroups, including the filegroup name, total size, used space, and free space. Click [here view a Filegroup Space Usage sample script](./src-samples/Filegroup_SpaceUsage.sql)
 
-<img width="550" alt="image" src="https://github.com/user-attachments/assets/a7dce4f9-f32e-4b7e-bd92-d4709bd0ed7b">
+<div align="center">
+  <img width="1100" alt="image" src="https://github.com/user-attachments/assets/a7dce4f9-f32e-4b7e-bd92-d4709bd0ed7b" style="border: 2px solid #4CAF50; border-radius: 5px; padding: 5px;"/>
+</div>
 
 ## Shrink the Database File
 
@@ -166,22 +149,9 @@ DBCC SHRINKFILE (1);
 
 ## Monitor the Shrink Operation
 
-> While the shrink operation is running, you can monitor for any blocking operations that might be affecting the process.
+> While the shrink operation is running, you can monitor for any blocking operations that might be affecting the process. Click [here view a Monitor the Shrink Operation sample script](./src-samples/DatabaseSize_SpaceUsage.sql)
 
-  ```sql
-  -- Check for blocking operations
-  SELECT 
-      blocking_session_id, 
-      wait_type, 
-      wait_time, 
-      wait_resource
-  FROM 
-      sys.dm_exec_requests
-  WHERE 
-      blocking_session_id <> 0;
-  ```
-
- <img width="350" alt="image" src="https://github.com/user-attachments/assets/0d724ca6-8ac1-478b-820d-7ae124af8937" />
+<img width="350" alt="image" src="https://github.com/user-attachments/assets/0d724ca6-8ac1-478b-820d-7ae124af8937" />
 
 ## Check for Active Transactions
 
