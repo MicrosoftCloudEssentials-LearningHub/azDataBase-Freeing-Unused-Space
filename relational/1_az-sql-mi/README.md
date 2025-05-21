@@ -53,7 +53,7 @@ For Azure SQL Managed Instance, consider these strategies:
 
 ### Detailed Space Usage by File
 
-> This query provides detailed information about each file, including the file name, type, growth settings, and more. Click [here view a Detailed Space Usage by File sample script](./DetailedSpaceUsage_byFile.sql)
+> This query provides detailed information about each file, including the file name, type, growth settings, and more. Click [here view a Detailed Space Usage by File sample script](./src-samples/DetailedSpaceUsage_byFile.sql)
 
 | **Category**       | **Recommendation**                                                                                                                                                                                                 |
 |--------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -67,7 +67,7 @@ For Azure SQL Managed Instance, consider these strategies:
 
 ### Space Usage by Table
 
-> This query provides information about space usage at the table level, including the number of rows, reserved space, data space, index space, and unused space. Will iterate through all tables in your database and execute sp_spaceused for each one. Click [here view a Space Usage by Table sample script](./SpaceUsage_byTable.sql)
+> This query provides information about space usage at the table level, including the number of rows, reserved space, data space, index space, and unused space. Will iterate through all tables in your database and execute sp_spaceused for each one. Click [here view a Space Usage by Table sample script](./src-samples/SpaceUsage_byTable.sql)
 
 | **Aspect**            | **Recommendation**|
 |-----------------------|---------------------------------------------------|
@@ -83,7 +83,7 @@ For Azure SQL Managed Instance, consider these strategies:
 
 ### Space Usage by Index
 
-> This query provides detailed information about space usage by indexes, including the index name, type, and space used. Click [here view a Space Usage by Index sample script](./SpaceUsage_byIndex.sql)
+> This query provides detailed information about space usage by indexes, including the index name, type, and space used. Click [here view a Space Usage by Index sample script](./src-samples/SpaceUsage_byIndex.sql)
 
 <div align="center">
   <img width="1100" alt="image" src="https://github.com/user-attachments/assets/9e73aa43-59a8-412a-b8e1-757478050b8c" style="border: 2px solid #4CAF50; border-radius: 5px; padding: 5px;"/>
@@ -91,7 +91,7 @@ For Azure SQL Managed Instance, consider these strategies:
 
 ### Database Size and Space Usage
 
-> This query provides an overview of the database size and space usage, including the total size, used space, and free space.  Click [here view a Database Size and Space Usage sample script](./DatabaseSize_SpaceUsage.sql)
+> This query provides an overview of the database size and space usage, including the total size, used space, and free space.  Click [here view a Database Size and Space Usage sample script](./src-samples/DatabaseSize_SpaceUsage.sql)
 
 <div align="center">
   <img width="1100" alt="image" src="https://github.com/user-attachments/assets/bd6cbfa5-aec0-48d6-a8dc-440023bca0d0" style="border: 2px solid #4CAF50; border-radius: 5px; padding: 5px;"/>
