@@ -53,18 +53,19 @@ For Azure SQL Managed Instance, consider these strategies:
 
 ### Detailed Space Usage by File
 
-> This query provides detailed information about each file, including the file name, type, growth settings, and more. Click [here](relational/1_az-sql-mi/Detailed_SpaceUsage_byFile.sql) view a sample script used.
-
-<div align="center">
-  <img width="700" alt="image" src="https://github.com/user-attachments/assets/b6ca6507-668c-427c-b01a-6a66e7e0fedd" style="border: 2px solid #4CAF50; border-radius: 5px; padding: 5px;"/>
-</div>
-
+> This query provides detailed information about each file, including the file name, type, growth settings, and more. Click [here view a sample script used](relational/1_az-sql-mi/Detailed_SpaceUsage_byFile.sql)
 
 | **Category**       | **Recommendation**                                                                                                                                                                                                 |
 |--------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **LOG Files**      | - **Free Space**: Maintain at least 25-30% free space in your log files. This ensures there is enough room for transaction logs to grow and prevents the database from running out of space during peak operations.<br>- **Monitoring**: Use the `sys.dm_db_log_space_usage`. Regularly check the percentage of log space used to avoid unexpected issues.<br>- **Maintenance**: Regularly back up your transaction logs to truncate inactive portions and free up space. |
 | **ROWS (Data Files)** | - **Free Space**: Aim to keep around 20-25% free space in your data files. This allows for growth and helps avoid performance issues related to frequent auto-growth events.<br>- **Auto-Growth Settings**: Configure auto-growth settings appropriately to avoid frequent small growths. Setting a fixed size for growth (e.g., 500 MB or 1 GB) is often better than a percentage-based growth.<br>- **Monitoring**: Use the `sys.database_files` view to monitor the size and free space of your data files. |
 | **FILESTREAM Data** | - **Free Space**: Ensure there is sufficient free space on the disk where the FILESTREAM data is stored. A good rule of thumb is to keep at least 20% free space.<br>- **Disk Monitoring**: Regularly monitor the disk space and set up alerts to notify you when free space falls below a certain threshold.<br>- **Maintenance**: Regularly clean up old or unused FILESTREAM data to free up space. |
+
+<div align="center">
+  <img width="1100" alt="image" src="https://github.com/user-attachments/assets/b6ca6507-668c-427c-b01a-6a66e7e0fedd" style="border: 2px solid #4CAF50; border-radius: 5px; padding: 5px;"/>
+</div>
+
+
 
 ### Space Usage by Table
 
