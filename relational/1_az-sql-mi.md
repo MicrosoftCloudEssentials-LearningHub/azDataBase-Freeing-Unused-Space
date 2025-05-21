@@ -27,11 +27,11 @@ For Azure SQL Managed Instance, consider these strategies:
 <summary><b> Table of Content </b> (Click to expand)</summary>
 
 - [Gather more detailed information](#gather-more-detailed-information)
-    - [Detailed Space Usage by File](#detailed-space-usage-by-file)
-    - [Space Usage by Table](#space-usage-by-table)
-    - [Space Usage by Index](#space-usage-by-index)
-    - [Database Size and Space Usage](#database-size-and-space-usage)
-    - [Filegroup Space Usage](#filegroup-space-usage)
+  - [Detailed Space Usage by File](#detailed-space-usage-by-file)
+  - [Space Usage by Table](#space-usage-by-table)
+  - [Space Usage by Index](#space-usage-by-index)
+  - [Database Size and Space Usage](#database-size-and-space-usage)
+  - [Filegroup Space Usage](#filegroup-space-usage)
 - [Shrink the Database File](#shrink-the-database-file)
 - [Monitor the Shrink Operation](#monitor-the-shrink-operation)
 - [Check for Active Transactions](#check-for-active-transactions)
@@ -41,12 +41,11 @@ For Azure SQL Managed Instance, consider these strategies:
 - [Removing Unused Indexes](#removing-unused-indexes)
 - [Using Filegroups](#using-filegroups)
 - [Fragmentation](#fragmentation)
-    - [Measuring Fragmentation](#measuring-fragmentation)
-    - [How to resolve it](#how-to-resolve-it)
-    - [Automating Maintenance in Azure SQL Managed Instance](#automating-maintenance-in-azure-sql-managed-instance)
+  - [Measuring Fragmentation](#measuring-fragmentation)
+  - [How to resolve it](#how-to-resolve-it)
+  - [Automating Maintenance in Azure SQL Managed Instance](#automating-maintenance-in-azure-sql-managed-instance)
     
 </details>
-
 
 ## Gather more detailed information
 
@@ -260,7 +259,6 @@ For Azure SQL Managed Instance, consider these strategies:
 | **DBCC SHRINKFILE**              | DBCC SHRINKFILE is used to shrink the size of a specific database file. This command attempts to move data pages from the end of the file to unoccupied space closer to the beginning of the file, thereby reducing the file size.            | `DBCC SHRINKFILE (file_id, target_size_in_MB);`                                              | `DBCC SHRINKFILE (1, 100);` -- Shrinks the file with ID 1 to 100 MB                       |
 | **DBCC SHRINKFILE (TRUNCATEONLY)** | DBCC SHRINKFILE (TRUNCATEONLY) is a specific option for DBCC SHRINKFILE that releases all free space at the end of the file to the operating system without moving any data pages. This command is useful when you want to quickly release unused space without the overhead of moving data. | `DBCC SHRINKFILE (file_id, TRUNCATEONLY);`                                                   | `DBCC SHRINKFILE (1, TRUNCATEONLY);` -- Releases unused space at the end of the file with ID 1 |
 
-
 ```sql
 -- Shrink the database file (replace 1 with your file_id)
 DBCC SHRINKFILE (1);
@@ -287,6 +285,7 @@ DBCC SHRINKFILE (1);
     | $${\color{red}\text{Data Page}}$$ | $${\color{red}\text{Data Page}}$$ | $${\color{red}\text{Data Page}}$$ |
 
 > [!IMPORTANT]
+>
 > - After each shrink operation, monitor the file size and fragmentation. <br/>
 > - Repeat the shrinking process in increments until you reach your desired target size.
 
@@ -307,7 +306,6 @@ DBCC SHRINKFILE (1);
       blocking_session_id <> 0;
   ```
 
- 
  <img width="350" alt="image" src="https://github.com/user-attachments/assets/0d724ca6-8ac1-478b-820d-7ae124af8937" />
 
 ## Check for Active Transactions
@@ -352,7 +350,6 @@ DBCC SHRINKFILE (1);
 |----------------------------------|---------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------|
 | **DBCC SHRINKDATABASE**          | DBCC SHRINKDATABASE is used to shrink the size of all data and log files in a database. This command attempts to move data pages from the end of the files to unoccupied space closer to the beginning of the files, thereby reducing the overall size of the database. `target_percent_free_space: The desired percentage of free space to remain in the database after the shrink operation.`  | `DBCC SHRINKDATABASE (database_name, target_percent_free_space);`                             | `DBCC SHRINKDATABASE (YourDatabaseName, 10);` -- Shrinks the database to leave 10% free space |
 
-
  ```sql
  DBCC SHRINKDATABASE (YourDatabaseName, 10);
  ```
@@ -368,6 +365,7 @@ DBCC SHRINKFILE (1);
  <img width="550" alt="image" src="https://github.com/user-attachments/assets/f906adcd-732e-4efa-849c-90d8fed2e9d3">
 
  To check for blocking operations:
+
  ```sql
  SELECT blocking_session_id, wait_type, wait_time, wait_resource
  FROM sys.dm_exec_requests
@@ -410,6 +408,7 @@ DBCC SHRINKFILE (1);
 > Azure SQL Managed Instance provides the `sys.dm_db_index_physical_stats` dynamic management function to measure fragmentation. This function returns information about the physical storage of indexes, including the average fragmentation percentage.
 
 Key Metrics:
+
 - **avg_fragmentation_in_percent**: Indicates the percentage of logical fragmentation in the index. Higher values suggest more fragmentation.
 - **page_count**: The number of pages in the index. Larger indexes with high fragmentation can significantly impact performance.
 
@@ -463,6 +462,7 @@ Key Metrics:
      ```sql
      ALTER INDEX [IndexName] ON [SchemaName].[TableName] REBUILD;
      ```
+
      > E.g `ALTER INDEX [PK__People__3214EC27785B7549] ON [dbo].[People] REBUILD;`
 
     | Before Rebuilt index | After REBUILD| 
@@ -472,6 +472,7 @@ Key Metrics:
    - **Reorganize Indexes**: Defragments the leaf level of the index pages without dropping the index.
 
     > E.g `ALTER INDEX [PK__RandomDa__3214EC2723C2100E] ON [dbo].[RandomData] REORGANIZE;`
+
      ```sql
      ALTER INDEX [IndexName] ON [SchemaName].[TableName] REORGANIZE;
      ```
@@ -480,8 +481,6 @@ Key Metrics:
     | --- | --- |
     | <img width="550" alt="image" src="https://github.com/user-attachments/assets/06baace1-33eb-4b7b-b7a6-28e4afe9e232" />  | <img width="650" alt="image" src="https://github.com/user-attachments/assets/64ce01bb-adb3-4f4a-81dc-4a93b9579023" /> | 
 
-
-   
 <div align="center">
   <h3 style="color: #4CAF50;">Total Visitors</h3>
   <img src="https://profile-counter.glitch.me/brown9804/count.svg" alt="Visitor Count" style="border: 2px solid #4CAF50; border-radius: 5px; padding: 5px;"/>

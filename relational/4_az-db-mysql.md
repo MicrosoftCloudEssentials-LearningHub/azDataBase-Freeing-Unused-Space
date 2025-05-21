@@ -12,7 +12,6 @@ Last updated: 2025-05-21
 
 > To optimize Azure Database for MySQL, you can:
 
-
 <details>
 <summary><b>Table of Content </b> (Click to expand)</summary>
 

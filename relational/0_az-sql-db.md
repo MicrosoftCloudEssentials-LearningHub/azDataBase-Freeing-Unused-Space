@@ -22,7 +22,6 @@ Last updated: 2025-05-21
 
 </details>
 
-
 ## Shrinking the Database
 
 >This helps reclaim unused space. Use the command:
@@ -30,7 +29,9 @@ Last updated: 2025-05-21
    ```sql
    DBCC SHRINKDATABASE (YourDatabaseName, 10);
    ```
+
    To check for blocking operations that might prevent the shrinking process from completing:
+
    ```sql
    SELECT blocking_session_id, wait_type, wait_time, wait_resource
    FROM sys.dm_exec_requests

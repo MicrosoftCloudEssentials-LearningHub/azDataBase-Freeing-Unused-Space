@@ -21,7 +21,6 @@ Last updated: 2025-01-19
 
 </details>
 
-
 ## Data Compression
 
 > Use Cassandra's compression features. Enable compression on tables:
