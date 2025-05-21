@@ -53,7 +53,7 @@ For Azure SQL Managed Instance, consider these strategies:
 
 ### Detailed Space Usage by File
 
-> This query provides detailed information about each file, including the file name, type, growth settings, and more. Click [here view a sample script used](relational/1_az-sql-mi/Detailed_SpaceUsage_byFile.sql)
+> This query provides detailed information about each file, including the file name, type, growth settings, and more. Click [here view a Detailed Space Usage by File sample script](relational/1_az-sql-mi/DetailedSpaceUsage_byFile.sql)
 
 | **Category**       | **Recommendation**                                                                                                                                                                                                 |
 |--------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -67,69 +67,7 @@ For Azure SQL Managed Instance, consider these strategies:
 
 ### Space Usage by Table
 
-> This query provides information about space usage at the table level, including the number of rows, reserved space, data space, index space, and unused space. Will iterate through all tables in your database and execute sp_spaceused for each one:
-  
-  ```sql
-  -- Create a temporary table to store the results
-  CREATE TABLE #SpaceUsed (
-      TableName NVARCHAR(256),
-      [Rows] INT,
-      Reserved VARCHAR(50),
-      Data VARCHAR(50),
-      IndexSize VARCHAR(50),
-      Unused VARCHAR(50),
-      [Free %] FLOAT
-  );
-  
-  DECLARE @TableName NVARCHAR(256);
-  
-  DECLARE TableCursor CURSOR FOR
-  SELECT QUOTENAME(SCHEMA_NAME(schema_id)) + '.' + QUOTENAME(name)
-  FROM sys.tables;
-  
-  OPEN TableCursor;
-  FETCH NEXT FROM TableCursor INTO @TableName;
-  
-  WHILE @@FETCH_STATUS = 0
-  BEGIN
-      INSERT INTO #SpaceUsed (TableName, [Rows], Reserved, Data, IndexSize, Unused)
-      EXEC sp_spaceused @TableName;
-  
-      FETCH NEXT FROM TableCursor INTO @TableName;
-  END;
-  
-  CLOSE TableCursor;
-  DEALLOCATE TableCursor;
-  
-  -- Use a CTE to calculate the Free %
-  WITH CTE AS (
-      SELECT 
-          TableName,
-          [Rows],
-          CAST(REPLACE(Reserved, ' KB', '') AS FLOAT) AS ReservedKB,
-          CAST(REPLACE(Data, ' KB', '') AS FLOAT) AS DataKB,
-          CAST(REPLACE(IndexSize, ' KB', '') AS FLOAT) AS IndexSizeKB,
-          CAST(REPLACE(Unused, ' KB', '') AS FLOAT) AS UnusedKB
-      FROM #SpaceUsed
-  )
-  UPDATE #SpaceUsed
-  SET [Free %] = 
-      CASE 
-          WHEN ReservedKB = 0 THEN 0
-          ELSE (UnusedKB / ReservedKB) * 100
-      END
-  FROM CTE
-  WHERE #SpaceUsed.TableName = CTE.TableName;
-  
-  -- Select the results from the temporary table
-  SELECT * FROM #SpaceUsed
-  ORDER BY TableName;
-  
-  -- Drop the temporary table
-  DROP TABLE #SpaceUsed;
-  ```
-
-<img width="550" alt="image" src="https://github.com/user-attachments/assets/401323a7-7ffc-4d6f-aade-96991793b677" />
+> This query provides information about space usage at the table level, including the number of rows, reserved space, data space, index space, and unused space. Will iterate through all tables in your database and execute sp_spaceused for each one. Click [here view a Space Usage by Table sample script](relational/1_az-sql-mi/SpaceUsage_byTable.sql)
 
 | **Aspect**            | **Recommendation**|
 |-----------------------|---------------------------------------------------|
@@ -138,6 +76,10 @@ For Azure SQL Managed Instance, consider these strategies:
 | **Partitioning**      | Consider partitioning large tables to improve manageability and performance. This can also help in efficiently managing space.|
 | **Archiving**         | Implement an archiving strategy for old or infrequently accessed data. This can free up space and improve performance for active data.|
 | **Compression**       | Use data compression techniques to reduce the size of tables and indexes. SQL Server supports row and page compression, which can significantly reduce space usage.|
+
+<div align="center">
+  <img width="1100" alt="image" src="https://github.com/user-attachments/assets/401323a7-7ffc-4d6f-aade-96991793b677" style="border: 2px solid #4CAF50; border-radius: 5px; padding: 5px;"/>
+</div>
 
 ### Space Usage by Index
 
