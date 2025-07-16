@@ -288,7 +288,9 @@ Key Metrics:
     | --- | --- |
     | <img width="550" alt="image" src="https://github.com/user-attachments/assets/06baace1-33eb-4b7b-b7a6-28e4afe9e232" />  | <img width="650" alt="image" src="https://github.com/user-attachments/assets/64ce01bb-adb3-4f4a-81dc-4a93b9579023" /> | 
 
+<!-- START BADGE -->
 <div align="center">
-  <h3 style="color: #4CAF50;">Total Visitors</h3>
-  <img src="https://profile-counter.glitch.me/brown9804/count.svg" alt="Visitor Count" style="border: 2px solid #4CAF50; border-radius: 5px; padding: 5px;"/>
+  <img src="https://img.shields.io/badge/Total%20views-55-limegreen" alt="Total views">
+  <p>Refresh Date: 2025-07-16</p>
 </div>
+<!-- END BADGE -->
